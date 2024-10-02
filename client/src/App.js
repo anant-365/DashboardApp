@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
@@ -20,6 +20,11 @@ import Performance from "scenes/performance";
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
+  useEffect(() => {
+    alert("DATA LOADING TIME MAY BE MORE THAN USUAL AS THE NODE BACKEND IS DEPLOYED ON RENDER.COM FREE TIER. RENDER SPINS DOWN A FREE WEB SERVICE THAT GOES 15 MINUTES WITHOUT RECEIVING INBOUND TRAFFIC. RENDER SPINS THE SERVICE BACK UP WHENEVER IT NEXT RECEIVES A REQUEST TO PROCESS. SPINNING UP A SERVICE TAKES UP TO A MINUTE, WHICH CAUSES A NOTICEABLE DELAY FOR INCOMING REQUESTS UNTIL THE SERVICE IS BACK UP AND RUNNING. FOR EXAMPLE, A BROWSER PAGE LOAD WILL HANG TEMPORARILY.");
+  }, []); // Empty dependency array to run once on mount
+
   return (
     <div className="app">
       <BrowserRouter>
